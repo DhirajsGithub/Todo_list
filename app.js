@@ -10,7 +10,7 @@ const date = require(__dirname + "/date.js");
 
 app.use("*/css", express.static("public/css"));
 
-const port = 5500;
+// const port = 5500;
 
 // -------------------------------
 // use a mongoose model in todo 
@@ -185,7 +185,12 @@ app.post("/delete", (req, res)=>{
 })
 
 
-
+// heroku port
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
 
 
 app.listen(port, () => {
